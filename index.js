@@ -1,33 +1,3 @@
-
-// const express=require('express')
-// const userRouter=require('./routes/authRoutes')
-// const mongoose=require('mongoose')
-// const cors=require('cors');
-// require('dotenv').config()
-
-// const app=express();
-// app.use(cors())
-// app.use(express.json())
-// const port=3001;
-// const uri = process.env.MONGODB_URI 
-// app.get('/',(req,res)=>{
-//     res.send("hellow horld")
-// })
-// app.listen(port,()=>{
-//     console.log("server is listining on 3001");
-// })
-// mongoose
-//         .connect(uri)
-//         .then(()=> {
-//             console.log("DB connected successfully");
-//         })
-//         .catch(function (error) {
-//             console.log("Somthing is Error to connecting to MongoDB:", error);
-//     });
-
-// app.use('/api/v1/auth',userRouter)
-
-
 const express = require('express');
 const userRouter = require('./routes/authRoutes');
 const Contectus=require('./routes/ContectusRoute')
@@ -51,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 mongoose
-    .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect(uri)
     .then(() => {
         console.log("DB connected successfully");
     })
