@@ -188,7 +188,7 @@ mongoose
             "CategoryName": "Pizza"
         }
     ]
-    app.post('/foodItems', async (req, res) => {
+    app.post('/api/v1/foodItems', async (req, res) => {
         try {
           // Insert data into the database
           await foodItem.insertMany(FoodItem);
@@ -210,7 +210,7 @@ mongoose
         const fooditems=await foodItem.find();
         res.json(fooditems);
       });
-      app.get('/foodCategories', async(req, res) => {
+      app.get('/api/v1/foodCategories', async(req, res) => {
         const foodcategories=await foodCategores.find();
         res.json( foodcategories);
       })
