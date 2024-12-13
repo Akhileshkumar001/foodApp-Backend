@@ -197,7 +197,7 @@ mongoose
           res.status(500).send('Error uploading data');
         }
       });
-      app.post('/foodCategories', async (req, res) => {
+    app.post('/api/v1/foodCategories', async (req, res) => {
         try {
           // Insert data into the database
           await foodCategores.insertMany(FoodCategore);
@@ -206,7 +206,7 @@ mongoose
           res.status(500).send('Error uploading data');
         }
       });
-      app.get('/foodItems', async(req, res) => {
+    app.get('/api/v1/foodItems', async(req, res) => {
         const fooditems=await foodItem.find();
         res.json(fooditems);
       });
