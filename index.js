@@ -207,13 +207,16 @@ mongoose
         }
       });
     app.get('/api/v1/foodItems', async(req, res) => {
-        const fooditems=await foodItem.find();
+        const fooditems = await foodItem.find();
+        console.log("food",foodItem);
+        
         res.json(fooditems);
+
       });
-      app.get('/api/v1/foodCategories', async(req, res) => {
-        const foodcategories=await foodCategores.find();
-        res.json( foodcategories);
-      })
+    app.get('/api/v1/foodCategories', async(req, res) => {
+    const foodcategories=await foodCategores.find();
+    res.json( foodcategories);
+    })
       
 app.use('/api/v1/auth', userRouter);
 app.use('/api/v1/auth', OrderItem);
