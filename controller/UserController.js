@@ -5,9 +5,9 @@ const jwt = require("jsonwebtoken");
 
 const RegisterUser = async (req, res, next) => {
     try {
-        const { name, password, email } = req.body;
+        const { username, password, email } = req.body;
 
-        if (!name || !email || !password) {
+        if (!username || !email || !password) {
             return res.status(400).json({ errorMessage: "Bad Request" });
         }
 
@@ -18,7 +18,7 @@ const RegisterUser = async (req, res, next) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const UserData = new User({ name, email: Email, password: hashedPassword });
+        const UserData = new User({ username, email: Email, password: hashedPassword });
         await UserData.save();
         console.log("Received data:", req.body);
         res.status(200).json({ message: "User registered successfully" });
@@ -54,14 +54,14 @@ const LoginUser = async (req, res, next) => {
         const token = jwt.sign(
             { userId: DetailOfuser._id },
             process.env.JWT_SECRET,
-            { expiresIn: '1h' }
+            
         );
 
 
         res.status(200).json({
             message: "loggedIn Successfully",
             token: token,
-            name: DetailOfuser.name,
+            name: DetailOfuser.username,
             userId: DetailOfuser._id,
         });
 
