@@ -9,7 +9,7 @@ const RegisterUser = async (req, res, next) => {
         console.log("userData",username,password,email);
         
         if (!username || !email || !password) {
-            return res.status(400).json({ errorMessage: "Bad Request" });
+            return res.status(400).json({ message: "Bad Request" });
         }
         const Email = email.toLowerCase();
         const isExistingUser = await User.findOne({ email: Email });
