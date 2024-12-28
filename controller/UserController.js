@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 
 const RegisterUser = async (req, res, next) => {
     try {
-        const { username, password, email } = req.body;
-
+        const {username, password, email } = req.body;
+        console.log("userData",username,password,email);
+        
         if (!username || !email || !password) {
             return res.status(400).json({ errorMessage: "Bad Request" });
         }
-
         const Email = email.toLowerCase();
         const isExistingUser = await User.findOne({ email: Email });
         if (isExistingUser) {
